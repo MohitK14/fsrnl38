@@ -1,7 +1,7 @@
 import { CDN_IMG_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
-  console.log("props", props);
+  //console.log("props", props);
 
   // Object destructuring
   const { name, cuisines, avgRating, costForTwo, cloudinaryImageId } =
@@ -19,7 +19,7 @@ const RestaurantCard = (props) => {
         </div>
         <div>
           <h3>{avgRating}</h3>
-          <h3>{costForTwo / 100}</h3>
+          <h3>{costForTwo}</h3>
         </div>
       </div>
     </div>

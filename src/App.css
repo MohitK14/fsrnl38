@@ -78,6 +78,22 @@
   height: 50%;
 }
 
+.input-data{
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.input-data input{
+  width: 20%;
+  margin-right: 5px
+}
+
+.shimmer-data{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

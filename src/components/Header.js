@@ -1,4 +1,11 @@
+import {useOnline} from "../utils/useOnline"
+
+
+
 const Header= ()=>{
+
+    const onlineStatus= useOnline()
+
     return(
         <>
             {/* <div className="flex justify-around border border-solid border-black"> */}
@@ -8,6 +15,7 @@ const Header= ()=>{
                 </div>
 
                 <ul className="header-list">
+                <li>OnlineStatus: {onlineStatus ? "🟢" : "🔴"}</li>
                     <li className="list-none m-2">Home</li>
                     <li className="list-none m-2">About Us</li>
                     <li className="list-none m-2">Contact Us</li>
