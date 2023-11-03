@@ -1,9 +1,8 @@
-import { restaurants } from "../utils/restaurants"
 
 const TopRatedRestaurants= (props)=>{
 
     function getTopRatedRestaurants(){
-       const filteredRestaurants= restaurants.filter(x=> x.avgRating>4);
+       const filteredRestaurants= props.filteredRestaurants.filter(x=> x.info.avgRating>4);
 
        props.topRatedRestaurants(filteredRestaurants)
     }

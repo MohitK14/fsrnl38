@@ -1,21 +1,20 @@
-import { restaurants } from "../utils/restaurants"
+
 import RestaurantCard from "./RestaurantCard"
 import { useEffect, useState } from "react"
 import TopRatedRestaurants from "./TopRatedRestaurants";
-import axios from "axios"
 import Shimmer from "./Shimmer";
 
 const Body= ()=>{
 
 
     const [searchText, setsearchText]= useState("");
-    const [filteredRestaurants, setFilteredRestaurants]= useState(restaurants);
-    // const [allRestaurants, setAllRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants]= useState([]);
+    const [allRestaurants, setAllRestaurants] = useState([]);
 
     function filterRestaurant(){
         console.log(searchText);
-        const filteredData= restaurants.filter(
-            x=> x.name.toLowerCase().includes(searchText.toLowerCase())
+        const filteredData= allRestaurants.filter(
+            x=> x.info.name.toLowerCase().includes(searchText.toLowerCase())
         );
         
         setFilteredRestaurants(filteredData)
@@ -25,24 +24,29 @@ const Body= ()=>{
         setFilteredRestaurants(restaurants)
     }
 
-    // useEffect(()=>{
-    //     fetchData()
-    // }, [])
+    useEffect(()=>{
+        fetchData()
+    }, [])
 
     async function fetchData(){
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
           );
           const response = await data.json();
-        // setFilteredRestaurants(response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        //     ?.restaurants)
+          console.log(response);
+
+        setFilteredRestaurants(response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+        setAllRestaurants(response?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     return (
         <>
             <div className="input-data">
                 <input type="text" onChange={(e)=>setsearchText(e.target.value)}/>
                 <button type="button" onClick={filterRestaurant}>Search</button>
-                <TopRatedRestaurants topRatedRestaurants={filterTopRatedRestaurant}/>
+                <TopRatedRestaurants 
+                    topRatedRestaurants={filterTopRatedRestaurant}
+                    filteredRestaurants={filteredRestaurants}/>
             </div>
 
             {
@@ -51,7 +55,7 @@ const Body= ()=>{
                     :
                     <div className="restaurant-cards">
                         {filteredRestaurants.map((restaurant) => (
-                        <RestaurantCard key={restaurant.id} details={restaurant} />
+                        <RestaurantCard key={restaurant.info.id} details={restaurant.info} />
                         ))}
                     </div>  
             }
