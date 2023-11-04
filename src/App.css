@@ -46,6 +46,7 @@
 .header-list{
   display: flex;
   justify-content: space-between;
+  width: 18%;
 }
 
 .header-list li{

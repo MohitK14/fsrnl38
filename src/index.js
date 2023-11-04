@@ -6,16 +6,43 @@ import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,RouterProvider} from "react-router-dom";
 import About from './components/About';
+import Error from './components/Error';
+import Contact from './components/Contact';
+import Body from './components/Body';
+import Profile from './components/Profile';
+import RestaurantDetails from './components/RestaurantDetails';
 
 const appRouter= createBrowserRouter([
   {
     path:"/",
-    element: <App/>
+    element: <App/>,
+    errorElement: <Error/>,
+    children:[
+      {
+        path:"/",
+        element: <Body/>
+      },
+      {
+        path:"/about",
+        element: <About/>,
+        children:[
+          {
+            path: "profile",
+            element: <Profile/>
+          }
+        ]
+      },
+      {
+        path:"/contact",
+        element: <Contact/>
+      },
+      {
+        path:"/restaurant/:id",
+        element: <RestaurantDetails/>
+      }
+    ]
   },
-  {
-    path:"/about",
-    element: <About/>
-  }
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

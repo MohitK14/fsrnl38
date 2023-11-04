@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import {useOnline} from "../utils/useOnline"
 
 
@@ -16,9 +17,13 @@ const Header= ()=>{
 
                 <ul className="header-list">
                 <li>OnlineStatus: {onlineStatus ? "🟢" : "🔴"}</li>
-                    <li className="list-none m-2">Home</li>
+                    {/* <li className="list-none m-2">Home</li> 
                     <li className="list-none m-2">About Us</li>
-                    <li className="list-none m-2">Contact Us</li>
+                    <li className="list-none m-2">Contact Us</li>*/}
+                    <Link to="/">Home</Link>
+                    <Link to="/about">About</Link>
+                    <Link to="/contact">Contact</Link>
+
                 </ul>
             </div>
         </>
