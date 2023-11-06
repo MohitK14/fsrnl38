@@ -9,7 +9,8 @@ const RestaurantDetails= ()=>{
     console.log(params)
     return (
         <>
-            <div>Restaurant id: {params}</div>
+            {/* <div>Restaurant id: {params}</div> */}
+            <div>Restaurant id: {params.id}</div>
         </>
     )
 }
