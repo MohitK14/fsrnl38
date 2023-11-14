@@ -14,7 +14,7 @@ const useRestaurantMenu = (id) => {
 
     setMenuData(json);
 
-    console.log("json", json);
+    //console.log("json", json);
   };
 
   return menuData;

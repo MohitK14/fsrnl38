@@ -103,3 +103,16 @@
     transform: rotate(360deg);
   }
 }
+
+.items-data{
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid;
+  margin: 10px 0
+}
+
+.items-data .title,
+.items-data .food-description
+{
+  text-align: left;
+} 
