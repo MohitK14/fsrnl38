@@ -17,9 +17,7 @@ const RestaurantDetails= ()=>{
      if (menu_data === null) return <Shimmer />;
 
      const itemCards =
-       menu_data?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]
-         ?.card?.card?.itemCards;
-
+       menu_data[0]?.menuItems
 
     function handleItem(item){
         dispatch(addItem(item))
@@ -34,26 +32,26 @@ const RestaurantDetails= ()=>{
             {itemCards.map(item=>{
                 return <div
                 data-testid="foodItems"
-                key={item.card.info.id}
+                key={item.id}
                 className="items-data"
               >
                 <div className="w-3/12 p-4">
                   <img
-                    src={CDN_IMG_URL + item.card.info.imageId}
+                    src={CDN_IMG_URL + item.imageId}
                     className="w-full" alt="imagedata"
                   />
                 </div>
                 <div className="w-9/12">
                   <div className="py-2">
-                    <span>{item.card.info.name}</span>
+                    <span>{item.name}</span>
                     <span>
                       - ₹
-                      {item.card.info.price
-                        ? item.card.info.price / 100
-                        : item.card.info.name / 100}
+                      {item.price
+                        ? item.price / 100
+                        : item.name / 100}
                     </span>
                   </div>
-                  <p className="text-xs">{item.card.info.description}</p>
+                  <p className="text-xs">{item.description}</p>
                   <div className="absolute">
                     <button
                       className="p-2 mx-16 rounded-lg bg-black text-white shadow-lg"

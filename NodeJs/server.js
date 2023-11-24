@@ -1,6 +1,8 @@
 const express= require("express");
 const mongoose= require("mongoose");
 const bodyParser = require("body-parser");
+const restRoutes= require("./Routes/restaurant.routes")
+const userRoutes= require("./Routes/user.routes")
 const app= express();
 
 app.use(bodyParser.json());
@@ -26,8 +28,6 @@ app.get("/", (req,res)=>{
     res.send("learning node js")
 })
 
-// app.post("/api/restaurant", (req,res)=>{
 
-// })
-
-require("./Routes/restaurant.routes")(app);
+restRoutes(app);
+userRoutes(app)

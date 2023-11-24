@@ -5,7 +5,8 @@ const restaurantSchema= mongoose.Schema({
     avgRating: String,
     cuisines: Array,
     cloudinaryImageId: String,
-    costForTwo: String
+    costForTwo: String,
+    menuItems: Array
 });
 
 const restaurantModel= mongoose.model("restaurants", restaurantSchema);
