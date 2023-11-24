@@ -7,8 +7,9 @@ const app= express();
 
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb+srv://MohitK:UhPOJprZV12si01J@cluster0.2pikwvv.mongodb.net/");
+// app.use(loggedInUserReq);
 
+mongoose.connect("mongodb+srv://MohitK:UhPOJprZV12si01J@cluster0.2pikwvv.mongodb.net/");
 
 const db= mongoose.connection;
 
@@ -24,9 +25,14 @@ app.listen("5000", ()=>{
     console.log("Server is running on port 5000")
 });
 
-app.get("/", (req,res)=>{
+app.get("/", loggedInUserReq, (req,res)=>{
     res.send("learning node js")
 })
+
+function loggedInUserReq(req, res, next){
+    console.log("User req initiatied");
+    next();
+}
 
 
 restRoutes(app);
